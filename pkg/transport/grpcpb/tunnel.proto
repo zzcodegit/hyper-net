@@ -1,0 +1,12 @@
+syntax = "proto3";
+package transport.grpcpb;
+option go_package = "hypernet-node/pkg/transport/grpcpb";
+
+// Tunnel provides a bidirectional byte stream (one stream = one logical connection).
+service Tunnel {
+  rpc Stream (stream Frame) returns (stream Frame);
+}
+
+message Frame {
+  bytes data = 1;
+}

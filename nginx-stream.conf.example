@@ -1,0 +1,32 @@
+##
+## Пример конфигурации nginx в режиме stream
+## для работы через Cloudflare Spectrum (сырой TCP поверх CDN).
+##
+## Схема:
+##   клиент → p2p.example.com:443 (Spectrum TCP) → nginx (этот stream-блок)
+##   → 127.0.0.1:4001 → libp2p/hypernet-node.
+##
+## Требования:
+##   - nginx собран с модулем stream;
+##   - hypernet-node слушает локальный TCP-порт 4001 (см. конфиг ноды);
+##   - в Spectrum origin указывается как <IP сервера>:443.
+##
+
+stream {
+    upstream hypernet_node_tcp {
+        # Локальный TCP-порт, на котором слушает hypernet-node.
+        server 127.0.0.1:4001;
+    }
+
+    server {
+        # Порт, на который Cloudflare Spectrum будет проксировать TCP-трафик.
+        listen 443;
+
+        proxy_pass hypernet_node_tcp;
+
+        # Включить PROXY protocol, если в Spectrum он включен.
+        # Это позволяет hypernet-node/фронту видеть реальный IP клиента.
+        proxy_protocol on;
+    }
+}
+

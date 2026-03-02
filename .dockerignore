@@ -1,0 +1,42 @@
+# Git and IDE
+.git
+.gitignore
+.cursor
+.vscode
+*.swp
+*~
+
+# Test/CI and local scripts (not needed inside image)
+ssh_tests.py
+remote_*.sh
+local_setup.sh
+plan_*.md
+*report*.md
+agent-transcripts
+.github
+
+# Docs and config not needed for go build
+README.md
+PROXY.md
+dostup.md
+tz.md
+Makefile
+docker-compose.yml
+nginx-stream.conf.example
+nginx_stream_test.go
+
+# Binaries and build artifacts
+bin/
+*.exe
+*.test
+
+# Root-level keys (runtime keys are mounted or env)
+nodeA.key
+test-node.key
+test-node-cross.key
+
+# Python
+__pycache__
+*.pyc
+.venv
+venv

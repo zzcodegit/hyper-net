@@ -1,0 +1,21 @@
+bin/
+dist/
+*.log
+*.key
+*.pem
+.env
+.DS_Store
+
+# Go build artifacts
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+
+# IDE
+.idea/
+.vscode/
+
