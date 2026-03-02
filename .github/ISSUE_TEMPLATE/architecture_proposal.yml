@@ -1,0 +1,25 @@
+name: Architecture Proposal
+description: Propose a structural or architectural change
+title: "[Architecture]: "
+labels: ["architecture"]
+body:
+  - type: textarea
+    attributes:
+      label: Motivation
+      description: Why is this change necessary?
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: Proposed Design
+      description: Describe the architectural design.
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: Trade-offs
+      description: What are the risks and downsides?
+    validations:
+      required: true
